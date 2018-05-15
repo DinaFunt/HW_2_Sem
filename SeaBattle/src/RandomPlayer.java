@@ -9,7 +9,7 @@ public class RandomPlayer extends ComputerPlayer {
             X = rnd.nextInt(10);
             Y = rnd.nextInt(10);
         }
-        while (OpponentField[X][Y] != 0);
+        while (OpponentField[X][Y] != Empty);
 
     }
 }

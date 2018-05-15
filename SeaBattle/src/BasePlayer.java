@@ -2,6 +2,10 @@ public abstract class BasePlayer {
     final int SIZE_OF_FIELD = 10;
     int X;
     int Y;
+    final int Empty = 0;
+    final int Deck = 1;
+    final int Killed = 2;
+    final int Sea = 3;
     int Count = 20;
     protected int[][] OwnField = new int[SIZE_OF_FIELD][SIZE_OF_FIELD];
     protected int[][] OpponentField = new int[SIZE_OF_FIELD][SIZE_OF_FIELD];
@@ -10,12 +14,12 @@ public abstract class BasePlayer {
         int i;
         if (Horizontal) {
             for (i = 0; i < Size; i++) {
-                OwnField[PosX][PosY + i] = 1;
+                OwnField[PosX][PosY + i] = Deck;
             }
         }
         else {
             for (i = 0; i < Size; i++) {
-                OwnField[PosX + i][PosY] = 1;
+                OwnField[PosX + i][PosY] = Deck;
             }
         }
     }
@@ -39,7 +43,7 @@ public abstract class BasePlayer {
 
             for (i = UnderBoundX; i <= UpperBoundX; i++) {
                 for (j = UnderBoundY; j <= UpperBoundY; j++) {
-                    if (OwnField[i][j] == 1) {
+                    if (OwnField[i][j] == Deck) {
                         return false;
                     }
                 }
@@ -57,7 +61,7 @@ public abstract class BasePlayer {
 
             for (i = UnderBoundX; i <= UpperBoundX; i++) {
                 for (j = UnderBoundY; j <= UpperBoundY; j++) {
-                    if (OwnField[i][j] == 1) {
+                    if (OwnField[i][j] == Deck) {
                         return false;
                     }
                 }
@@ -70,27 +74,27 @@ public abstract class BasePlayer {
     void Result(boolean Res, int PosX, int PosY) {
         if (Res) {
             Count--;
-            OpponentField[PosX][PosY] = 2;
+            OpponentField[PosX][PosY] = Killed;
         }
         else {
-            if (OpponentField[PosX][PosY] == 0) {
-                OpponentField[PosX][PosY] = 3;
+            if (OpponentField[PosX][PosY] == Empty) {
+                OpponentField[PosX][PosY] = Sea;
             }
         }
 
     }
 
      public boolean Hit(int PosX, int PosY) {
-        if (OwnField[PosX][PosY] == 1) {
-            OwnField[PosX][PosY] = 2;
+        if (OwnField[PosX][PosY] == Deck) {
+            OwnField[PosX][PosY] = Killed;
             return true;
         }
         else {
-            if (OwnField[PosX][PosY] == 2 || OwnField[PosX][PosY] == 3) {
+            if (OwnField[PosX][PosY] == Killed || OwnField[PosX][PosY] == Sea) {
                 return false;
             }
             else {
-                OwnField[PosX][PosY] = 3;
+                OwnField[PosX][PosY] = Sea;
                 return false;
             }
 

@@ -26,8 +26,8 @@ public class Smart extends ComputerPlayer {
 
         for (i = X1 - 1; i <= X2 + 1; i++) {
             for (j = Y1; j <= Y2; j++) {
-                if (i < SIZE_OF_FIELD && i >=0 && j < SIZE_OF_FIELD && j >=0 && OpponentField[i][j] != 2) {
-                    OpponentField[i][j] = 3;
+                if (i < SIZE_OF_FIELD && i >=0 && j < SIZE_OF_FIELD && j >=0 && OpponentField[i][j] != Killed) {
+                    OpponentField[i][j] = Sea;
                 }
             }
         }
@@ -49,7 +49,7 @@ public class Smart extends ComputerPlayer {
 
             switch (Side) {
                 case 0:
-                    if (PosY + 1 < SIZE_OF_FIELD && OpponentField[X][PosY + 1] == 0) {
+                    if (PosY + 1 < SIZE_OF_FIELD && OpponentField[X][PosY + 1] == Empty) {
                         Y = PosY + 1;
                         Mark++;
                         break;
@@ -58,7 +58,7 @@ public class Smart extends ComputerPlayer {
                         Side++;
                     }
                 case 1:
-                    if (PosX + 1 < SIZE_OF_FIELD && OpponentField[PosX + 1][Y] == 0) {
+                    if (PosX + 1 < SIZE_OF_FIELD && OpponentField[PosX + 1][Y] == Empty) {
                         X = PosX + 1;
                         Mark++;
                         break;
@@ -67,7 +67,7 @@ public class Smart extends ComputerPlayer {
                         Side++;
                     }
                 case 2:
-                    if (PosY - 1 >= 0 && OpponentField[X][PosY - 1] == 0) {
+                    if (PosY - 1 >= 0 && OpponentField[X][PosY - 1] == Empty) {
                         Y = PosY - 1;
                         Mark++;
                         break;
@@ -76,7 +76,7 @@ public class Smart extends ComputerPlayer {
                         Side++;
                     }
                 case 3:
-                    if (PosX - 1 >= 0 && OpponentField[PosX - 1][Y] == 0) {
+                    if (PosX - 1 >= 0 && OpponentField[PosX - 1][Y] == Empty) {
                         X = PosX - 1;
                         Mark++;
                         break;
@@ -90,19 +90,19 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                     }
             }
         }
-        else if (Flag > 1 && OpponentField[X][Y] == 2) {
+        else if (Flag > 1 && OpponentField[X][Y] == Killed) {
 
             switch (Side) {
                 case 0:
-                    if (Y + 1 < SIZE_OF_FIELD && OpponentField[X][Y + 1] == 0) {
+                    if (Y + 1 < SIZE_OF_FIELD && OpponentField[X][Y + 1] == Empty) {
                         Y++;
                         break;
                     }
-                    else if (PosY - 1 >= 0 && OpponentField[X][PosY - 1] == 0) {
+                    else if (PosY - 1 >= 0 && OpponentField[X][PosY - 1] == Empty) {
                         int C;
                         C = PosY;
                         PosY = Y;
@@ -116,7 +116,7 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                         Flag = 0;
                         Mark = 0;
                         Side = 0;
@@ -124,11 +124,11 @@ public class Smart extends ComputerPlayer {
 
                     }
                 case 1:
-                    if (X + 1 < SIZE_OF_FIELD && OpponentField[X + 1][Y] == 0) {
+                    if (X + 1 < SIZE_OF_FIELD && OpponentField[X + 1][Y] == Empty) {
                         X++;
                         break;
                     }
-                    else if (PosX - 1 >= 0 && OpponentField[PosX - 1][Y] == 0) {
+                    else if (PosX - 1 >= 0 && OpponentField[PosX - 1][Y] == Empty) {
                         int C;
                         C = PosX;
                         PosX = X;
@@ -142,7 +142,7 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                         Flag = 0;
                         Mark = 0;
                         Side = 0;
@@ -150,7 +150,7 @@ public class Smart extends ComputerPlayer {
 
                     }
                 case 2:
-                    if (Y - 1 >= 0 && OpponentField[X][Y - 1] == 0) {
+                    if (Y - 1 >= 0 && OpponentField[X][Y - 1] == Empty) {
                         Y--;
                         break;
                     }
@@ -160,14 +160,14 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                         Flag = 0;
                         Mark = 0;
                         Side = 0;
                         break;
                     }
                 case 3:
-                    if (X - 1 >= 0 && OpponentField[X - 1][Y] == 0) {
+                    if (X - 1 >= 0 && OpponentField[X - 1][Y] == Empty) {
                         X--;
                         break;
                     }
@@ -177,7 +177,7 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                         Flag = 0;
                         Mark = 0;
                         Side = 0;
@@ -185,10 +185,10 @@ public class Smart extends ComputerPlayer {
                     }
             }
         }
-        else if (Flag > 1 && OpponentField[X][Y] != 2) {
+        else if (Flag > 1 && OpponentField[X][Y] != Killed) {
             switch (Side) {
                 case 0:
-                    if (PosY - 1 >= 0 && OpponentField[X][PosY - 1] == 0) {
+                    if (PosY - 1 >= 0 && OpponentField[X][PosY - 1] == Empty) {
                         int C;
                         C = PosY;
                         PosY = Y;
@@ -202,7 +202,7 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                         Flag = 0;
                         Mark = 0;
                         Side = 0;
@@ -210,7 +210,7 @@ public class Smart extends ComputerPlayer {
 
                     }
                 case 1:
-                    if (PosX - 1 >= 0 && OpponentField[PosX - 1][Y] == 0) {
+                    if (PosX - 1 >= 0 && OpponentField[PosX - 1][Y] == Empty) {
                         int C;
                         C = PosX;
                         PosX = X;
@@ -224,7 +224,7 @@ public class Smart extends ComputerPlayer {
                             X = rnd.nextInt(10);
                             Y = rnd.nextInt(10);
                         }
-                        while (OpponentField[X][Y] != 0);
+                        while (OpponentField[X][Y] != Empty);
                         Flag = 0;
                         Mark = 0;
                         Side = 0;
@@ -237,7 +237,7 @@ public class Smart extends ComputerPlayer {
                         X = rnd.nextInt(10);
                         Y = rnd.nextInt(10);
                     }
-                    while (OpponentField[X][Y] != 0);
+                    while (OpponentField[X][Y] != Empty);
                     Flag = 0;
                     Mark = 0;
                     Side = 0;
@@ -248,7 +248,7 @@ public class Smart extends ComputerPlayer {
                         X = rnd.nextInt(10);
                         Y = rnd.nextInt(10);
                     }
-                    while (OpponentField[X][Y] != 0);
+                    while (OpponentField[X][Y] != Empty);
                     Flag = 0;
                     Mark = 0;
                     Side = 0;
@@ -260,7 +260,7 @@ public class Smart extends ComputerPlayer {
                 X = rnd.nextInt(10);
                 Y = rnd.nextInt(10);
             }
-            while (OpponentField[X][Y] != 0);
+            while (OpponentField[X][Y] != Empty);
         }
 
     }

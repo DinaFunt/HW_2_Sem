@@ -38,20 +38,19 @@ public class User extends BasePlayer{
         int j;
         for (i = 0; i < SIZE_OF_FIELD; i++) {
             for (j = 0; j < SIZE_OF_FIELD; j++) {
-                if (OwnField[i][j] == 0) {
-                    System.out.print("." + " ");
-                }
-                else {
-                    if (OwnField[i][j] == 1) {
+                switch (OwnField[i][j]) {
+                    case Empty:
+                        System.out.print("." + " ");
+                        break;
+                    case Deck:
                         System.out.print("O" + " ");
-                    }
-                    else if (OwnField[i][j] == 2 ){
+                        break;
+                    case Killed:
                         System.out.print("X" + " ");
-                    }
-                    else if (OwnField[i][j] == 3) {
+                        break;
+                    case Sea:
                         System.out.print("*" + " ");
-                    }
-
+                        break;
                 }
             }
             System.out.println();
@@ -63,38 +62,36 @@ public class User extends BasePlayer{
         int j;
         for (i = 0; i < SIZE_OF_FIELD; i++) {
             for (j = 0; j < SIZE_OF_FIELD; j++) {
-                if (OwnField[i][j] == 0) {
-                    System.out.print("." + " ");
-                }
-                else {
-                    if (OwnField[i][j] == 1) {
+                switch (OwnField[i][j]) {
+                    case Empty:
+                        System.out.print("." + " ");
+                        break;
+                    case Deck:
                         System.out.print("O" + " ");
-                    }
-                    else if (OwnField[i][j] == 2 ){
+                        break;
+                    case Killed:
                         System.out.print("X" + " ");
-                    }
-                    else if (OwnField[i][j] == 3) {
+                        break;
+                    case Sea:
                         System.out.print("*" + " ");
-                    }
-
+                        break;
                 }
             }
             System.out.print("\t");
             for (j = 0; j < SIZE_OF_FIELD; j++) {
-                if (OpponentField[i][j] == 0) {
-                    System.out.print("." + " ");
-                }
-                else {
-                    if (OpponentField[i][j] == 1) {
+                switch (OpponentField[i][j]) {
+                    case Empty:
+                        System.out.print("." + " ");
+                        break;
+                    case Deck:
                         System.out.print("O" + " ");
-                    }
-                    else if (OpponentField[i][j] == 2 ){
+                        break;
+                    case Killed:
                         System.out.print("X" + " ");
-                    }
-                    else if (OpponentField[i][j] == 3) {
+                        break;
+                    case Sea:
                         System.out.print("*" + " ");
-                    }
-
+                        break;
                 }
             }
             System.out.println();

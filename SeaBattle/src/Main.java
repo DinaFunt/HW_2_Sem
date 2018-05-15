@@ -46,8 +46,6 @@ public class Main {
                 }
                 a = Opponent.Hit(User.X, User.Y);
                 User.Result(a, User.X, User.Y);
-
-                User.ShowOpponent();
             }
 
             Opponent.NextStep();
