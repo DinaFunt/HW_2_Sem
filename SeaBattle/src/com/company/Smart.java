@@ -1,3 +1,5 @@
+package com.company;
+
 import java.util.Random;
 
 public class Smart extends ComputerPlayer {
@@ -33,7 +35,7 @@ public class Smart extends ComputerPlayer {
         }
     }
 
-@Override
+    @Override
     public void NextStep() {
 
         if (Flag == 1) {
@@ -265,4 +267,3 @@ public class Smart extends ComputerPlayer {
 
     }
 }
-

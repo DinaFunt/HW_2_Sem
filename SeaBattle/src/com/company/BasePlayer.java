@@ -1,16 +1,22 @@
-public abstract class BasePlayer {
-    final int SIZE_OF_FIELD = 10;
-    int X;
-    int Y;
-    final int Empty = 0;
-    final int Deck = 1;
-    final int Killed = 2;
-    final int Sea = 3;
+package com.company;
+
+public abstract class BasePlayer{
+    protected final int SIZE_OF_FIELD = 10;
+    protected int X;
+    protected int Y;
+    protected final int Empty = 0;
+    protected final int Deck = 1;
+    protected final int Killed = 2;
+    protected final int Sea = 3;
     int Count = 20;
     protected int[][] OwnField = new int[SIZE_OF_FIELD][SIZE_OF_FIELD];
     protected int[][] OpponentField = new int[SIZE_OF_FIELD][SIZE_OF_FIELD];
 
-    void SetShip(int PosX, int PosY, int Size, boolean Horizontal) {
+    void SetShips() {}
+
+    public void Print() {}
+
+    protected void SetShip(int PosX, int PosY, int Size, boolean Horizontal) {
         int i;
         if (Horizontal) {
             for (i = 0; i < Size; i++) {
@@ -24,7 +30,7 @@ public abstract class BasePlayer {
         }
     }
 
-    boolean CanSetShip(int PosX, int PosY, int Size, boolean Horizontal) {
+    protected boolean CanSetShip(int PosX, int PosY, int Size, boolean Horizontal) {
         int i;
         int j;
         int UpperBoundX;
@@ -81,10 +87,9 @@ public abstract class BasePlayer {
                 OpponentField[PosX][PosY] = Sea;
             }
         }
-
     }
 
-     public boolean Hit(int PosX, int PosY) {
+    boolean Hit(int PosX, int PosY) {
         if (OwnField[PosX][PosY] == Deck) {
             OwnField[PosX][PosY] = Killed;
             return true;

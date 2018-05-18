@@ -1,3 +1,5 @@
+package com.company;
+
 import java.util.Random;
 
 public class ComputerPlayer extends BasePlayer {
@@ -6,7 +8,7 @@ public class ComputerPlayer extends BasePlayer {
 
     public void NextStep() {}
 
-    public void SetShips() {
+    void SetShips() {
         int SizeOfShip = 4;
         boolean H;
         int X;

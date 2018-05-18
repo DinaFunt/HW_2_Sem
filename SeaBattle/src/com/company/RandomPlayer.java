@@ -1,9 +1,11 @@
+package com.company;
+
 import java.util.Random;
 
 public class RandomPlayer extends ComputerPlayer {
     private Random rnd = new Random(System.currentTimeMillis());
 
-@Override
+    @Override
     public void NextStep() {
         do {
             X = rnd.nextInt(10);

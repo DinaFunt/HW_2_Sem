@@ -1,9 +1,12 @@
+package com.company;
+
 import java.util.*;
 
-public class User extends BasePlayer{
+class User extends BasePlayer{
     private Scanner in = new Scanner(System.in);
 
-    void GetShips() {
+    @Override
+    void SetShips() {
         int X;
         int Y;
         int i;
@@ -28,7 +31,8 @@ public class User extends BasePlayer{
         }
     }
 
-    public void NextStep() {
+    void NextStep() {
+        ShowOpponent();
         X = in.nextInt();
         Y = in.nextInt();
     }
@@ -57,7 +61,7 @@ public class User extends BasePlayer{
         }
     }
 
-    void ShowOpponent() {
+    private void ShowOpponent() {
         int i;
         int j;
         for (i = 0; i < SIZE_OF_FIELD; i++) {

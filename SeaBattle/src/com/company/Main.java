@@ -1,34 +1,48 @@
-import java.util.Scanner;
+package com.company;
+
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] Args) {
+
         boolean a;
         Scanner in = new Scanner(System.in);
         ComputerPlayer Opponent;
 
-        System.out.println("enter the number of the selected opponent:\n" + "1) Random\n " + "2) Smart\n");
+        System.out.println("enter the number of the selected opponent:\n" + "1) Random\n " + "2) Smart\n" + "3) Your own variant\n");
         int TypeOfOpponent = in.nextInt();
 
-        if (TypeOfOpponent == 1) {
-            Opponent = new RandomPlayer();
+        ServiceLoader<ComputerPlayer> serviceLoader =
+                ServiceLoader.load(ComputerPlayer.class);
+
+
+        for (ComputerPlayer cpService : serviceLoader) {
+            cpService.Print();
         }
-        else if (TypeOfOpponent == 2) {
-            Opponent = new Smart();
-        }
-        else {
-            System.out.print("We're sorry. You enter wrong number so your opponent'll be stupid. :\\ \n");
-            Opponent = new RandomPlayer();
+
+        switch (TypeOfOpponent) {
+            case 1:
+                Opponent = new RandomPlayer();
+                break;
+            case 2:
+                Opponent = new Smart();
+                break;
+            case 3:
+                Opponent = serviceLoader.findFirst().get();
+                break;
+            default:
+                System.out.print("We're sorry. You enter wrong number so your opponent'll be stupid. :\\ \n");
+                Opponent = new RandomPlayer();
         }
 
         Opponent.SetShips();
         User User = new User();
-        User.GetShips();
+        User.SetShips();
 
         System.out.print("You start first!\n");
 
         do {
-            User.ShowOpponent();
             System.out.print("Enter X, Y.\n");
             User.NextStep();
             if (User.Count == 0) {
@@ -38,7 +52,6 @@ public class Main {
             User.Result(a, User.X, User.Y);
 
             while (a) {
-                User.ShowOpponent();
                 System.out.print("You hit the ship. Enter X, Y again.\n");
                 User.NextStep();
                 if (User.Count == 0) {
