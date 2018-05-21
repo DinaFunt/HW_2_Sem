@@ -1,0 +1,5 @@
+"version": 3,
+"file": "While.js",
+"sources": ["While.txt"],
+"names": ["a=15", "b=16", "while", "a<100", "a=a+b", "printf"],
+"mappings": "CSAAKA; ESACKC; GKAEAE; GYAEQG; SAIKI, MKAOAK;"
