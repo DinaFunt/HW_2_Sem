@@ -1,0 +1,15 @@
+Input file: While.txt; Output file: While.js
+
+Names with indexes: 0)a=15 1)b=16 2)while 3)a<100 4)a=a+b 5)printf 
+
+Line in: 1 Column in: 9  0 Index of file: Line out: 0 Column out: 5 Index of name: 0
+
+Line in: 2 Column in: 9  0 Index of file: Line out: 1 Column out: 5 Index of name: 1
+
+Line in: 3 Column in: 5  0 Index of file: Line out: 2 Column out: 0 Index of name: 2
+
+Line in: 3 Column in: 12  0 Index of file: Line out: 2 Column out: 8 Index of name: 3
+
+Line in: 4 Column in: 9 Index of file: 0  Line out: 4 Column out: 5 Index of name: 4
+
+Line in: 6 Column in: 5  0 Index of file: Line out: 7 Column out: 0 Index of name: 5
